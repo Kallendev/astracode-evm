@@ -2,7 +2,6 @@
 pragma solidity ^0.8.20;
 
 contract AstraVote {
-
     // --- CUSTOM ERRORS ---
     error AlreadyVoted();
     error InvalidChoice();
@@ -10,10 +9,7 @@ contract AstraVote {
     // --- EVENTS ---
     event VoteCast(address indexed voter, uint256 choice);
 
-    event VoterStatusChanged(
-        address indexed voter,
-        bool hasVoted
-    );
+    event VoterStatusChanged(address indexed voter, bool hasVoted);
 
     // --- STATE VARIABLES ---
     mapping(address => bool) public hasVoted;
@@ -23,7 +19,6 @@ contract AstraVote {
 
     // --- GOVERNANCE FUNCTIONS ---
     function vote(uint256 _choice) public {
-
         // Check if already voted
         if (hasVoted[msg.sender]) {
             revert AlreadyVoted();
